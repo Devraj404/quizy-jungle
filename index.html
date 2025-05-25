@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            height: 100vh;
+            /* Ensures bubbles cover only the viewport height */
+            overflow: hidden;
+            /* Prevents them from affecting page height */
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 6s linear infinite;
+        }
+
+        .bubble:nth-child(2) {
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: floatBubbles 8s linear infinite 1s;
+        }
+
+        .bubble:nth-child(3) {
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            animation: floatBubbles 5s linear infinite 2s;
+        }
+
+        .bubble:nth-child(4) {
+            left: 70%;
+            width: 25px;
+            height: 25px;
+            animation: floatBubbles 7s linear infinite 3s;
+        }
+
+        .bubble:nth-child(5) {
+            left: 90%;
+            width: 35px;
+            height: 35px;
+            animation: floatBubbles 9s linear infinite 4s;
+        }
+
+        .bubble:nth-child(6) {
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            animation: floatBubbles 6s linear infinite 5s;
+        }
+
+        .bubble:nth-child(7) {
+            left: 60%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 7s linear infinite 2s;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            margin-top: 100px;
+            flex: 1;
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: #28A745;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .start-btn:hover {
+            background: #218838;
+        }
+
+        .nameofsite {
+            padding-top: 2%;
+            text-align: center;
+            color: rgba(10, 62, 174, 0.992);
+        }
+
+        .outer {
+            padding: 5%;
+            padding-top: 3%;
+        }
+
+        .nav {
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            padding: 3%;
+            padding-bottom: 1%;
+            padding-top: 1%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .outer-button {
+            padding-top: 1%;
+            text-align: center;
+        }
+
+        button {
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #2cb941f1;
+            transition: all 1000ms;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            outline: 2px solid #2cb941f1;
+        }
+
+        button:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+            outline: 2px solid #2cb941f1;
+            box-shadow: 4px 5px 17px -4px#2cb941f1;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: #2cb941f1;
+            transform: skewX(45deg);
+            z-index: -1;
+            transition: width 1000ms;
+        }
+
+        button:hover::before {
+            width: 250%;
+        }
+
+        #i {
+            background-color: white;
+        }
+
+        .devs {
+            padding: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: auto;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 10vh;
+        }
+
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #f8f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+
+    <img src="{{ url_for('static', filename='QJ.jpg') }}" alt="QJ Logo" width="200">
+
+
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+
+    <div class="outer">
+        <div class="nav">
+            <h3>Welcome to Quizy-Jungle, your go-to destination for fun and learning, and friendly competition! Whether
+                you love testing your knowledge, or simply discovering new facts, we have a wide range of quizzes just
+                for you. From general knowledge and science to entertainment and trivia, our quizzes are designed to
+                keep you engaged and entertained. Plus, earn certificates for completing quizzes and showcase your
+                achievements! Ready to put your brain to the test? Dive in and start exploring now!</h3>
+        </div>
+    </div>
+
+    <div class="outer-button">
+
+        <div class="button">
+            <form method="POST">
+                <button onclick="location.href='result.html'">Getting Started</button>
+            </form>
+
+        </div>
+
+    </div>
+    <div class="devs">
+        <h5> Devs : Moh-Dev </h5>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='mohit.jpg') }}" alt="Mohit" width="120" height="120"
+                class="profile-image">
+            <img src="{{ url_for('static', filename='dev.jpg') }}" alt="Dev" height="120" width="120"
+                class="profile-image">
+        </div>
+    </div>
+
+</body>
+
+</html>

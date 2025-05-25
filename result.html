@@ -1,0 +1,563 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 6s linear infinite;
+        }
+
+        bubble:nth-child(2) {
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: floatBubbles 8s linear infinite 1s;
+        }
+
+        bubble:nth-child(3) {
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            animation: floatBubbles 5s linear infinite 2s;
+        }
+
+        bubble:nth-child(4) {
+            left: 70%;
+            width: 25px;
+            height: 25px;
+            animation: floatBubbles 7s linear infinite 3s;
+        }
+
+        bubble:nth-child(5) {
+            left: 90%;
+            width: 35px;
+            height: 35px;
+            animation: floatBubbles 9s linear infinite 4s;
+        }
+
+        bubble:nth-child(6) {
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            animation: floatBubbles 6s linear infinite 5s;
+        }
+
+        bubble:nth-child(7) {
+            left: 60%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 7s linear infinite 2s;
+        }
+
+        .result-container {
+            position: relative;
+            z-index: 2;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: rgba(67, 68, 65, 0.8);
+            border-radius: 10px;
+            width: 30%;
+        }
+
+        h1 {
+            color: #00e6e6;
+            font-family: 'Times New Roman';
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f10303;
+            border: 2px solid #f10303;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #f10303;
+            color: #ffffff;
+            box-shadow: 4px 5px 17px -4px #f10303;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+
+        a[href="/download"] {
+            color: #28a745 !important;
+            border: 2px solid #28a745 !important;
+        }
+
+        a[href="/download"]:hover {
+            background-color: #28a745 !important; /* Darker green */
+            box-shadow: 4px 5px 17px -4px #218838;
+            color: white !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        </div>
+
+    <div class="result-container">
+        <h1>Your Score: {{ score }}/10</h1>
+        <form action = "result" method="POST">
+            <a href="{{ url_for('reset') }}" class="btn btn-primary">Try Again</a><br>
+
+
+            <a href="/download" class="btn btn-primary">Get Certificate</a>
+
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 6s linear infinite;
+        }
+
+        bubble:nth-child(2) {
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: floatBubbles 8s linear infinite 1s;
+        }
+
+        bubble:nth-child(3) {
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            animation: floatBubbles 5s linear infinite 2s;
+        }
+
+        bubble:nth-child(4) {
+            left: 70%;
+            width: 25px;
+            height: 25px;
+            animation: floatBubbles 7s linear infinite 3s;
+        }
+
+        bubble:nth-child(5) {
+            left: 90%;
+            width: 35px;
+            height: 35px;
+            animation: floatBubbles 9s linear infinite 4s;
+        }
+
+        bubble:nth-child(6) {
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            animation: floatBubbles 6s linear infinite 5s;
+        }
+
+        bubble:nth-child(7) {
+            left: 60%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 7s linear infinite 2s;
+        }
+
+        .result-container {
+            position: relative;
+            z-index: 2;
+            margin: 100px auto;
+            padding: 30px;
+            padding-bottom: 10%;
+            background-color: rgba(67, 68, 65, 0.8);
+            border-radius: 10px;
+            width: 50%;
+        }
+
+        h1 {
+            color: #00e6e6;
+            font-family: 'Times New Roman';
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f10303;
+            border: 2px solid #f10303;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #f10303;
+            color: #ffffff;
+            box-shadow: 4px 5px 17px -4px #f10303;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+
+        a[href="/download"] {
+            color: #28a745 !important;
+            border: 2px solid #28a745 !important;
+            margin-top: 50px;
+        }
+
+        a[href="/download"]:hover {
+            background-color: #28a745 !important; /* Darker green */
+            box-shadow: 4px 5px 17px -4px #218838;
+            color: white !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        </div>
+
+    <div class="result-container">
+        <h1>Your Score: {{ score }}/10</h1>
+        <form action = "result" method="POST">
+            <a href="{{ url_for('reset') }}" class="btn btn-primary">Try Again</a><br>
+
+
+            <a href="/download" class="btn btn-primary">Get Certificate</a>
+
+
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 6s linear infinite;
+        }
+
+        bubble:nth-child(2) {
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: floatBubbles 8s linear infinite 1s;
+        }
+
+        bubble:nth-child(3) {
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            animation: floatBubbles 5s linear infinite 2s;
+        }
+
+        bubble:nth-child(4) {
+            left: 70%;
+            width: 25px;
+            height: 25px;
+            animation: floatBubbles 7s linear infinite 3s;
+        }
+
+        bubble:nth-child(5) {
+            left: 90%;
+            width: 35px;
+            height: 35px;
+            animation: floatBubbles 9s linear infinite 4s;
+        }
+
+        bubble:nth-child(6) {
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            animation: floatBubbles 6s linear infinite 5s;
+        }
+
+        bubble:nth-child(7) {
+            left: 60%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 7s linear infinite 2s;
+        }
+
+        .result-container {
+            position: relative;
+            z-index: 2;
+            margin: 100px auto;
+            padding: 30px;
+            padding-bottom: 10%;
+            background-color: rgba(67, 68, 65, 0.8);
+            border-radius: 10px;
+            width: 50%;
+        }
+
+        h1 {
+            color: #00e6e6;
+            font-family: 'Times New Roman';
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f10303;
+            border: 2px solid #f10303;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #f10303;
+            color: #ffffff;
+            box-shadow: 4px 5px 17px -4px #f10303;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+
+        a[href="/download"] {
+            color: #28a745 !important;
+            border: 2px solid #28a745 !important;
+            margin-top: 50px;
+        }
+
+        a[href="/download"]:hover {
+            background-color: #28a745 !important; /* Darker green */
+            box-shadow: 4px 5px 17px -4px #218838;
+            color: white !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        </div>
+
+    <div class="result-container">
+        <h1>Your Score: {{ score }}/10</h1>
+        <form action = "result" method="POST">
+            <a href="{{ url_for('reset') }}" class="btn btn-primary">Try Again</a><br>
+
+
+            <a href="/download" class="btn btn-primary">Get Certificate</a>
+
+
+        </form>
+    </div>
+</body>
+</html>

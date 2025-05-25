@@ -1,0 +1,495 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Electronic Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+        
+        h1 {
+            margin-top: 10px;
+            padding-top: 0%;
+            color: #af5e13;
+            font-size: 50px;
+        }
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 15px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #03bcff;
+            font-family: 'Times New Roman';
+        }
+
+        .options label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+        #para{
+           color :#af5e13 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Electronic Quiz</h1>
+        <B><p id="para">- Test your electronics knowledge! Answer the following questions:</p></B>
+        
+        <form action="/electronic" method="POST">
+            <h2>
+            <div class="question">1. What does LED stand for?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Low Energy Device"> Low Energy Device</label>
+                <label><input type="radio" name="q1" value="Light Emitting Diode"> Light Emitting Diode</label>
+                <label><input type="radio" name="q1" value="Linear Electric Device"> Linear Electric Device</label>
+                <label><input type="radio" name="q1" value="Luminous Energy Distributor"> Luminous Energy Distributor</label>
+            </div>
+
+            <div class="question">2. What is the SI unit of electrical resistance?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Volt"> Volt</label>
+                <label><input type="radio" name="q2" value="Watt"> Watt</label>
+                <label><input type="radio" name="q2" value="Ampere"> Ampere</label>
+                <label><input type="radio" name="q2" value="Ohm"> Ohm</label>
+            </div>
+            
+            <div class="question">3. What type of current does a battery provide?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="AC"> AC</label>
+                <label><input type="radio" name="q3" value="DC"> DC</label>
+                <label><input type="radio" name="q3" value="Pulse"> Pulse</label>
+                <label><input type="radio" name="q3" value="Hybrid"> Hybrid</label>
+            </div>
+            
+            <div class="question">4. What is the function of a capacitor in a circuit?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q4" value="Increase voltage"> Increase voltage</label>
+                <label><input type="radio" name="q4" value="Reduce resistance"> Reduce resistance</label>
+                <label><input type="radio" name="q4" value="Store electrical energy"> Store electrical energy</label>
+                <label><input type="radio" name="q4" value="Convert AC to DC"> Convert AC to DC</label>
+            </div>
+
+            <div class="question">5. What does a transistor do in an electronic circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Amplifies signals"> Amplifies signals</label>
+                <label><input type="radio" name="q5" value="Stores energy"> Stores energy</label>
+                <label><input type="radio" name="q5" value="Measures voltage"> Measures voltage</label>
+                <label><input type="radio" name="q5" value="Generates power"> Generates power</label>
+            </div>
+
+            <div class="question">6. What is the primary function of a diode in a circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Amplifies signals"> Amplifies signals</label>
+                <label><input type="radio" name="q6" value="Stores energy"> Stores energy</label>
+                <label><input type="radio" name="q6" value="Measures voltage"> Measures voltage</label>
+                <label><input type="radio" name="q6" value="Generates power"> Generates power</label>
+            </div>
+
+            <div class="question">7. Which component is used to store electric charge?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q7" value="Stores energy"> Inductor</label>
+                <label><input type="radio" name="q7" value="Amplifies signals"> Resistor</label>
+                <label><input type="radio" name="q7" value="Measures voltage"> Capacitor</label>
+                <label><input type="radio" name="q7" value="Generates power"> Transistor</label>
+            </div>
+
+            <div class="question">8. What does an inductor do in a circuit?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q8" value="Stores energy"> Converts voltage</label>
+                <label><input type="radio" name="q8" value="Measures voltage"> Stores electric charge</label>
+                <label><input type="radio" name="q8" value="Generates power">Regulates current</label>
+                <label><input type="radio" name="q8" value="Amplifies signals"> Blocks DC and allows AC</label>
+            </div>
+
+            <div class="question">9. What is the purpose of a fuse in an electrical circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Increase voltage"> To increase voltage</label>
+                <label><input type="radio" name="q9" value="Prevent excessive current flow"> To prevent excessive current flow</label>
+                <label><input type="radio" name="q9" value="Amplify signals"> To amplify signals</label>
+                <label><input type="radio" name="q9" value="Store energy"> To store energy</label>
+            </div>
+            
+            <div class="question">10. Which of the following is a semiconductor material?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Iron"> Iron</label>
+                <label><input type="radio" name="q10" value="Silicon"> Silicon</label>
+                <label><input type="radio" name="q10" value="Copper"> Copper</label>
+                <label><input type="radio" name="q10" value="Aluminum"> Aluminum</label>
+            </div>
+        </h2>
+            
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electronic Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            margin-top: 10px;
+            padding-top: 0%;
+            color: #af5e13;
+            font-size: 50px;
+        }
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 15px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #03bcff;
+            font-family: 'Times New Roman';
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+            margin-right: 10px;
+            outline: none;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .options input[type="radio"]:checked {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:checked::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .options input[type="radio"]:hover {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:hover:before{
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Electronic Quiz</h1>
+        <p>- Test your electronics knowledge! Answer the following questions:</p>
+
+        <form action="/electronic" method="POST">
+            <div class="question">1. What does LED stand for?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Low Energy Device"> Low Energy Device</label>
+                <label><input type="radio" name="q1" value="Light Emitting Diode"> Light Emitting Diode</label>
+                <label><input type="radio" name="q1" value="Linear Electric Device"> Linear Electric Device</label>
+                <label><input type="radio" name="q1" value="Luminous Energy Distributor"> Luminous Energy Distributor</label>
+            </div>
+
+            <div class="question">2. What is the SI unit of electrical resistance?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Volt"> Volt</label>
+                <label><input type="radio" name="q2" value="Watt"> Watt</label>
+                <label><input type="radio" name="q2" value="Ampere"> Ampere</label>
+                <label><input type="radio" name="q2" value="Ohm"> Ohm</label>
+            </div>
+
+            <div class="question">3. What type of current does a battery provide?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="AC"> AC</label>
+                <label><input type="radio" name="q3" value="DC"> DC</label>
+                <label><input type="radio" name="q3" value="Pulse"> Pulse</label>
+                <label><input type="radio" name="q3" value="Hybrid"> Hybrid</label>
+            </div>
+
+            <div class="question">4. What is the function of a capacitor in a circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Increase voltage"> Increase voltage</label>
+                <label><input type="radio" name="q4" value="Reduce resistance"> Reduce resistance</label>
+                <label><input type="radio" name="q4" value="Store electrical energy"> Store electrical energy</label>
+                <label><input type="radio" name="q4" value="Convert AC to DC"> Convert AC to DC</label>
+            </div>
+
+            <div class="question">5. What does a transistor do in an electronic circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Amplifies signals"> Amplifies signals</label>
+                <label><input type="radio" name="q5" value="Stores energy"> Stores energy</label>
+                <label><input type="radio" name="q5" value="Measures voltage"> Measures voltage</label>
+                <label><input type="radio" name="q5" value="Generates power"> Generates power</label>
+            </div>
+
+            <div class="question">6. What is the primary function of a diode in a circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Allows current in one direction"> Allows current in one direction</label>
+                <label><input type="radio" name="q6" value="Stores energy"> To Store energy</label>
+                <label><input type="radio" name="q6" value="To regulate resistance"> To regulate resistance</label>
+                <label><input type="radio" name="q6" value="Generates power"> Generates power</label>
+            </div>
+
+            <div class="question">7. Which component is used to store electric charge?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q7" value="Inductor"> Inductor</label>
+                <label><input type="radio" name="q7" value="Resistor"> Resistor</label>
+                <label><input type="radio" name="q7" value="Capacitor"> Capacitor</label>
+                <label><input type="radio" name="q7" value="Transistor"> Transistor</label>
+            </div>
+
+            <div class="question">8. What does an inductor do in a circuit?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q8" value="Converts voltage"> Converts voltage</label>
+                <label><input type="radio" name="q8" value="Stores electric charge"> Stores electric charge</label>
+                <label><input type="radio" name="q8" value="Regulates current"> Regulates current</label>
+                <label><input type="radio" name="q8" value="Blocks DC and allows AC"> Blocks DC and allows AC</label>
+            </div>
+
+            <div class="question">9. What is the purpose of a fuse in an electrical circuit?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="To increase voltage"> To increase voltage</label>
+                <label><input type="radio" name="q9" value="To prevent excessive current flow"> To prevent excessive current flow</label>
+                <label><input type="radio" name="q9" value="To amplify signals"> To amplify signals</label>
+                <label><input type="radio" name="q9" value="To store energy"> To store energy</label>
+            </div>
+            
+            <div class="question">10. Which of the following is a semiconductor material?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Iron"> Iron</label>
+                <label><input type="radio" name="q10" value="Silicon"> Silicon</label>
+                <label><input type="radio" name="q10" value="Copper"> Copper</label>
+                <label><input type="radio" name="q10" value="Aluminum"> Aluminum</label>
+            </div>
+            
+            
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+
+        </form>
+    </div>
+</body>
+</html>

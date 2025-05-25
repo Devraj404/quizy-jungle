@@ -1,0 +1,474 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+        
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.8);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #00e6e6;
+            font-family: 'Times New Roman';
+        }
+
+        .options label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #00e6e6;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #00e6e6;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #00e6e6;
+            box-shadow: 4px 5px 17px -4px #00e6e6;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Cricket Quiz</h1>
+        <p>Test your cricket knowledge! Answer the following questions:</p>
+        
+        <form action="/cricket" method="POST">
+            
+            <div class="question">1. How many players are there in a cricket team?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="9"> 9</label>
+                <label><input type="radio" name="q1" value="10"> 10</label>
+                <label><input type="radio" name="q1" value="11"> 11</label>
+                <label><input type="radio" name="q1" value="12"> 12</label>
+            </div>
+
+            <div class="question">2. What is the length of a cricket pitch?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="18 yards"> 18 yards</label>
+                <label><input type="radio" name="q2" value="20 yards"> 20 yards</label>
+                <label><input type="radio" name="q2" value="22 yards"> 22 yards</label>
+                <label><input type="radio" name="q2" value="24 yards"> 24 yards</label>
+            </div>
+
+            <div class="question">3. Which country won the first-ever Cricket World Cup in 1975?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Australia"> Australia</label>
+                <label><input type="radio" name="q3" value="India"> India</label>
+                <label><input type="radio" name="q3" value="West Indies"> West Indies</label>
+                <label><input type="radio" name="q3" value="England"> England</label>
+            </div>
+
+            <div class="question">4. Who has scored the most runs in international cricket?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Ricky Ponting"> Ricky Ponting</label>
+                <label><input type="radio" name="q4" value="Virat Kohli"> Virat Kohli</label>
+                <label><input type="radio" name="q4" value="Sachin Tendulkar"> Sachin Tendulkar</label>
+                <label><input type="radio" name="q4" value="Jacques Kallis"> Jacques Kallis</label>
+            </div>
+
+            <div class="question">5. What is the highest individual score in an ODI match?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="200"> 200</label>
+                <label><input type="radio" name="q5" value="264"> 264</label>
+                <label><input type="radio" name="q5" value="237"> 237</label>
+                <label><input type="radio" name="q5" value="219"> 219</label>
+            </div>
+
+            <div class="question">6. Which bowler has taken the most wickets in Test cricket?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Muttiah Muralitharan"> Muttiah Muralitharan</label>
+                <label><input type="radio" name="q6" value="Shane Warne"> Shane Warne</label>
+                <label><input type="radio" name="q6" value="James Anderson"> James Anderson</label>
+                <label><input type="radio" name="q6" value="Anil Kumble"> Anil Kumble</label>
+            </div>
+
+            <div class="question">7. What is the maximum number of overs in a T20 match?</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="10"> 10</label>
+                <label><input type="radio" name="q7" value="20"> 20</label>
+                <label><input type="radio" name="q7" value="50"> 50</label>
+                <label><input type="radio" name="q7" value="60"> 60</label>
+            </div>
+
+            <div class="question">8. Which team has won the most ICC Cricket World Cups?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="India"> India</label>
+                <label><input type="radio" name="q8" value="West Indies"> West Indies</label>
+                <label><input type="radio" name="q8" value="Australia"> Australia</label>
+                <label><input type="radio" name="q8" value="Pakistan"> Pakistan</label>
+            </div>
+
+            <div class="question">9. Who is the only batsman to score 400 runs in a Test match?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Brian Lara"> Brian Lara</label>
+                <label><input type="radio" name="q9" value="Don Bradman"> Don Bradman</label>
+                <label><input type="radio" name="q9" value="Virender Sehwag"> Virender Sehwag</label>
+                <label><input type="radio" name="q9" value="Chris Gayle"> Chris Gayle</label>
+            </div>
+
+            <div class="question">10. In which year was the first Cricket World Cup held?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1975"> 1975</label>
+                <label><input type="radio" name="q10" value="1983"> 1983</label>
+                <label><input type="radio" name="q10" value="1992"> 1992</label>
+                <label><input type="radio" name="q10" value="2003"> 2003</label>
+            </div>
+
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            margin-top: 10px;
+            padding-top: 0%;
+            color: #af5e13;
+            font-size: 50px;
+        }
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 15px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #03bcff;
+            font-family: 'Times New Roman';
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+            margin-right: 10px;
+            outline: none;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .options input[type="radio"]:checked {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:checked::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .options input[type="radio"]:hover {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:hover:before{
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Cricket Quiz</h1>
+        <p>Test your cricket knowledge! Answer the following questions:</p>
+
+        <form action="/cricket" method="POST">
+
+            <div class="question">1. How many players are there in a cricket team?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="9"> 9</label>
+                <label><input type="radio" name="q1" value="10"> 10</label>
+                <label><input type="radio" name="q1" value="11"> 11</label>
+                <label><input type="radio" name="q1" value="12"> 12</label>
+            </div>
+
+            <div class="question">2. What is the length of a cricket pitch?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="18 yards"> 18 yards</label>
+                <label><input type="radio" name="q2" value="20 yards"> 20 yards</label>
+                <label><input type="radio" name="q2" value="22 yards"> 22 yards</label>
+                <label><input type="radio" name="q2" value="24 yards"> 24 yards</label>
+            </div>
+
+            <div class="question">3. Which country won the first-ever Cricket World Cup in 1975?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="Australia"> Australia</label>
+                <label><input type="radio" name="q3" value="India"> India</label>
+                <label><input type="radio" name="q3" value="West Indies"> West Indies</label>
+                <label><input type="radio" name="q3" value="England"> England</label>
+            </div>
+
+            <div class="question">4. Who has scored the most runs in international cricket?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="Ricky Ponting"> Ricky Ponting</label>
+                <label><input type="radio" name="q4" value="Virat Kohli"> Virat Kohli</label>
+                <label><input type="radio" name="q4" value="Sachin Tendulkar"> Sachin Tendulkar</label>
+                <label><input type="radio" name="q4" value="Jacques Kallis"> Jacques Kallis</label>
+            </div>
+
+            <div class="question">5. What is the highest individual score in an ODI match?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="200"> 200</label>
+                <label><input type="radio" name="q5" value="264"> 264</label>
+                <label><input type="radio" name="q5" value="237"> 237</label>
+                <label><input type="radio" name="q5" value="219"> 219</label>
+            </div>
+
+            <div class="question">6. Which bowler has taken the most wickets in Test cricket?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Muttiah Muralitharan"> Muttiah Muralitharan</label>
+                <label><input type="radio" name="q6" value="Shane Warne"> Shane Warne</label>
+                <label><input type="radio" name="q6" value="James Anderson"> James Anderson</label>
+                <label><input type="radio" name="q6" value="Anil Kumble"> Anil Kumble</label>
+            </div>
+
+            <div class="question">7. What is the maximum number of overs in a T20 match?</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="10"> 10</label>
+                <label><input type="radio" name="q7" value="20"> 20</label>
+                <label><input type="radio" name="q7" value="50"> 50</label>
+                <label><input type="radio" name="q7" value="60"> 60</label>
+            </div>
+
+            <div class="question">8. Which team has won the most ICC Cricket World Cups?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="India"> India</label>
+                <label><input type="radio" name="q8" value="West Indies"> West Indies</label>
+                <label><input type="radio" name="q8" value="Australia"> Australia</label>
+                <label><input type="radio" name="q8" value="Pakistan"> Pakistan</label>
+            </div>
+
+            <div class="question">9. Who is the only batsman to score 400 runs in a Test match?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Brian Lara"> Brian Lara</label>
+                <label><input type="radio" name="q9" value="Don Bradman"> Don Bradman</label>
+                <label><input type="radio" name="q9" value="Virender Sehwag"> Virender Sehwag</label>
+                <label><input type="radio" name="q9" value="Chris Gayle"> Chris Gayle</label>
+            </div>
+
+            <div class="question">10. In which year was the first Cricket World Cup held?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1975"> 1975</label>
+                <label><input type="radio" name="q10" value="1983"> 1983</label>
+                <label><input type="radio" name="q10" value="1992"> 1992</label>
+                <label><input type="radio" name="q10" value="2003"> 2003</label>
+            </div>
+
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

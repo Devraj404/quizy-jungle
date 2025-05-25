@@ -1,0 +1,544 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 6s linear infinite;
+        }
+
+        .bubble:nth-child(2) {
+            left: 30%;
+            width: 40px;
+            height: 40px;
+            animation: floatBubbles 8s linear infinite 1s;
+        }
+
+        .bubble:nth-child(3) {
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            animation: floatBubbles 5s linear infinite 2s;
+        }
+
+        .bubble:nth-child(4) {
+            left: 70%;
+            width: 25px;
+            height: 25px;
+            animation: floatBubbles 7s linear infinite 3s;
+        }
+
+        .bubble:nth-child(5) {
+            left: 90%;
+            width: 35px;
+            height: 35px;
+            animation: floatBubbles 9s linear infinite 4s;
+        }
+
+        .bubble:nth-child(6) {
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            animation: floatBubbles 6s linear infinite 5s;
+        }
+
+        .bubble:nth-child(7) {
+            left: 60%;
+            width: 20px;
+            height: 20px;
+            animation: floatBubbles 7s linear infinite 2s;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            margin-top: 10px;
+            padding-top: 0%;
+            color: #af5e13;
+            font-size: 50px;
+        }
+
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 15px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #03bcff;
+            font-family: 'Times New Roman';
+        }
+
+        .options label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Math Quiz</h1>
+        <p>- Test your math skills! Answer the following questions:</p>
+
+        <form action="/math" method="POST">
+            <div class="question">1. What is 7 multiplied by 8?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="56"> 56</label>
+                <label><input type="radio" name="q1" value="64"> 64</label>
+                <label><input type="radio" name="q1" value="49"> 49</label>
+                <label><input type="radio" name="q1" value="72"> 72</label>
+            </div>
+
+            <div class="question">2. What is the square root of 144?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q2" value="10"> 10</label>
+                <label><input type="radio" name="q2" value="14"> 14</label>
+                <label><input type="radio" name="q2" value="12"> 12</label>
+                <label><input type="radio" name="q2" value="16"> 16</label>
+            </div>
+
+            <div class="question">3. What is the value of pi (π) approximately?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q3" value="2.71"> 2.71</label>
+                <label><input type="radio" name="q3" value="1.61"> 1.61</label>
+                <label><input type="radio" name="q3" value="4.20"> 4.20</label>
+                <label><input type="radio" name="q3" value="3.14"> 3.14</label>
+            </div>
+
+            <div class="question">4. What is 15% of 200?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="30"> 30</label>
+                <label><input type="radio" name="q4" value="25"> 25</label>
+                <label><input type="radio" name="q4" value="35"> 35</label>
+                <label><input type="radio" name="q4" value="40"> 40</label>
+            </div>
+
+            <div class="question">5. What is the area of a rectangle with length 10 and width 5?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q5" value="25"> 25</label>
+                <label><input type="radio" name="q5" value="50"> 50</label>
+                <label><input type="radio" name="q5" value="15"> 15</label>
+                <label><input type="radio" name="q5" value="30"> 30</label>
+            </div>
+
+            <div class="question">6. What is 2 to the power of 4 (2^4)?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q6" value="8"> 8</label>
+                <label><input type="radio" name="q6" value="12"> 12</label>
+                <label><input type="radio" name="q6" value="16"> 16</label>
+                <label><input type="radio" name="q6" value="20"> 20</label>
+            </div>
+
+            <div class="question">7. What is the sum of angles in a triangle?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q7" value="90 degrees"> 90 degrees</label>
+                <label><input type="radio" name="q7" value="180 degrees"> 180 degrees</label>
+                <label><input type="radio" name="q7" value="360 degrees"> 360 degrees</label>
+                <label><input type="radio" name="q7" value="270 degrees"> 270 degrees</label>
+            </div>
+
+            <div class="question">8. What is 1000 divided by 10?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="100"> 100</label>
+                <label><input type="radio" name="q8" value="10"> 10</label>
+                <label><input type="radio" name="q8" value="1000"> 1000</label>
+                <label><input type="radio" name="q8" value="1"> 1</label>
+            </div>
+
+            <div class="question">9. What is the next prime number after 11?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q9" value="12"> 12</label>
+                <label><input type="radio" name="q9" value="15"> 15</label>
+                <label><input type="radio" name="q9" value="14"> 14</label>
+                <label><input type="radio" name="q9" value="13"> 13</label>
+            </div>
+
+            <div class="question">10. If x + 5 = 12, what is the value of x?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="7"> 7</label>
+                <label><input type="radio" name="q10" value="17"> 17</label>
+                <label><input type="radio" name="q10" value="60"> 60</label>
+                <label><input type="radio" name="q10" value="2.4"> 2.4</label>
+            </div>
+
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+
+        p {
+            font-size: 20px;
+            text-align: left;
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            margin-top: 10px;
+            padding-top: 0%;
+            color: #af5e13;
+            font-size: 50px;
+        }
+        .quiz-container {
+            padding: 3%;
+            background-color: rgba(67, 68, 65, 0.589);
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+            padding-bottom: 15px;
+        }
+
+        .question {
+            text-align: left;
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            color: #03bcff;
+            font-family: 'Times New Roman';
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            padding: 5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+            margin-right: 10px;
+            outline: none;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .options input[type="radio"]:checked {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:checked::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .options input[type="radio"]:hover {
+            border: 2px solid #03bcff;
+            border-radius: 5px;
+        }
+
+        .options input[type="radio"]:hover:before{
+            content: '';
+            width: 18px;
+            height: 18px;
+            background-color: #03bcff;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #03bcff;
+            transition: all 0.3s;
+            font-size: 16px;
+            outline: 2px solid #03bcff;
+            margin-top: 20px;
+        }
+        button:hover {
+            color: #121212;
+            background: #03bcff;
+            box-shadow: 4px 5px 17px -4px #03bcff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="quiz-container">
+        <h1>Math Quiz</h1>
+        <p>- Test your math skills! Answer the following questions:</p>
+
+        <form action="/math" method="POST">
+            <div class="question">1. What is 7 multiplied by 8?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="56"> 56</label>
+                <label><input type="radio" name="q1" value="64"> 64</label>
+                <label><input type="radio" name="q1" value="49"> 49</label>
+                <label><input type="radio" name="q1" value="72"> 72</label>
+            </div>
+
+            <div class="question">2. What is the square root of 144?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q2" value="10"> 10</label>
+                <label><input type="radio" name="q2" value="14"> 14</label>
+                <label><input type="radio" name="q2" value="12"> 12</label>
+                <label><input type="radio" name="q2" value="16"> 16</label>
+            </div>
+
+            <div class="question">3. What is the value of pi (π) approximately?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q3" value="2.71"> 2.71</label>
+                <label><input type="radio" name="q3" value="1.61"> 1.61</label>
+                <label><input type="radio" name="q3" value="4.20"> 4.20</label>
+                <label><input type="radio" name="q3" value="3.14"> 3.14</label>
+            </div>
+
+            <div class="question">4. What is 15% of 200?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="30"> 30</label>
+                <label><input type="radio" name="q4" value="25"> 25</label>
+                <label><input type="radio" name="q4" value="35"> 35</label>
+                <label><input type="radio" name="q4" value="40"> 40</label>
+            </div>
+
+            <div class="question">5. What is the area of a rectangle with length 10 and width 5?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q5" value="25"> 25</label>
+                <label><input type="radio" name="q5" value="50"> 50</label>
+                <label><input type="radio" name="q5" value="15"> 15</label>
+                <label><input type="radio" name="q5" value="30"> 30</label>
+            </div>
+
+            <div class="question">6. What is 2 to the power of 4 (2^4)?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q6" value="8"> 8</label>
+                <label><input type="radio" name="q6" value="12"> 12</label>
+                <label><input type="radio" name="q6" value="16"> 16</label>
+                <label><input type="radio" name="q6" value="20"> 20</label>
+            </div>
+
+            <div class="question">7. What is the sum of angles in a triangle?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q7" value="90 degrees"> 90 degrees</label>
+                <label><input type="radio" name="q7" value="180 degrees"> 180 degrees</label>
+                <label><input type="radio" name="q7" value="360 degrees"> 360 degrees</label>
+                <label><input type="radio" name="q7" value="270 degrees"> 270 degrees</label>
+            </div>
+
+            <div class="question">8. What is 1000 divided by 10?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="100"> 100</label>
+                <label><input type="radio" name="q8" value="10"> 10</label>
+                <label><input type="radio" name="q8" value="1000"> 1000</label>
+                <label><input type="radio" name="q8" value="1"> 1</label>
+            </div>
+
+            <div class="question">9. What is the next prime number after 11?</div>
+            <div class="options">
+                
+                <label><input type="radio" name="q9" value="12"> 12</label>
+                <label><input type="radio" name="q9" value="15"> 15</label>
+                <label><input type="radio" name="q9" value="14"> 14</label>
+                <label><input type="radio" name="q9" value="13"> 13</label>
+            </div>
+
+            <div class="question">10. If x + 5 = 12, what is the value of x?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="7"> 7</label>
+                <label><input type="radio" name="q10" value="17"> 17</label>
+                <label><input type="radio" name="q10" value="60"> 60</label>
+                <label><input type="radio" name="q10" value="2.4"> 2.4</label>
+            </div>
+
+            <button type="submit" onclick="location.href='result.html'">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

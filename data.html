@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Form</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: white;
+            text-align: center;
+            overflow: hidden; 
+        }
+
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation: floatBubbles 6s linear infinite; }
+        .bubble:nth-child(2) { left: 30%; width: 40px; height: 40px; animation: floatBubbles 8s linear infinite 1s; }
+        .bubble:nth-child(3) { left: 50%; width: 15px; height: 15px; animation: floatBubbles 5s linear infinite 2s; }
+        .bubble:nth-child(4) { left: 70%; width: 25px; height: 25px; animation: floatBubbles 7s linear infinite 3s; }
+        .bubble:nth-child(5) { left: 90%; width: 35px; height: 35px; animation: floatBubbles 9s linear infinite 4s; }
+        .bubble:nth-child(6) { left: 20%; width: 30px; height: 30px; animation: floatBubbles 6s linear infinite 5s; }
+        .bubble:nth-child(7) { left: 60%; width: 20px; height: 20px; animation: floatBubbles 7s linear infinite 2s; }
+        
+        .outer {
+            padding: 10%;
+            padding-top: 1%;
+        }
+
+        .form {
+            padding: 3%;
+            padding-top: 50px;
+            padding-bottom: 100px;
+            border-radius: 10px;
+            background-color: rgba(67, 68, 65, 0.589);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin: auto;
+            width: 80%;
+        }
+        .head {
+            padding-top: 1%;
+            font-family: 'Poppins', sans-serif;
+        }
+        input {
+            width: 86.55%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #555;
+            border-radius: 5px;
+            background: #222; 
+            color: white;
+            font-size: 16px;
+        }
+        select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #555;
+            border-radius: 5px;
+            background: #222; 
+            color: white;
+            font-size: 16px;
+        }
+        input::placeholder {
+            color: #bbb;
+        }
+        input:focus {
+            background: #222 !important;
+        }
+        select::placeholder {
+            color: #bbb;
+        }
+        button {
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #105ac3;
+            transition: all 1000ms;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            outline: 2px solid #105ac3;
+        }
+        button:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+            outline: 2px solid #105ac3;
+            box-shadow: 4px 5px 17px -4px#105ac3;
+        }
+        button::before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: #105ac3;
+            transform: skewX(45deg);
+            z-index: -1;
+            transition: width 1000ms;
+        }
+        button:hover::before {
+            width: 250%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <div class="head">
+        <h1>Enter Your Details</h1>
+    </div>
+
+    <div class="outer">
+    <div class="form">
+        <form action="data" method="POST">
+
+            <input type="text" name="name" placeholder="Enter your name" required><br><br>
+            <input type="email" name="email" placeholder="Enter your email" required><br><br>
+
+            <input type="text" name="country" placeholder="Enter your country" required><br><br>
+
+            <select name="type" required>
+                <option value="">Choose your Preference </option>
+                <option value="student">Student</option>
+                <option value="professional">Professional</option>
+            </select><br><br>
+
+            <select name="interest" required>
+                <option value="">Choose your Interest</option>
+                <option value="Cricket">Cricket</option>
+                <option value="History">History</option>
+                <option value="General Knowledge">General Knowledge</option>
+                <option value="Maths">Maths</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Environment">Environment</option>
+                <option value="Technology">Technology</option>
+            </select><br><br>
+
+            <button>Submit</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
+
+
+
